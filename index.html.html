@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Ya es 2025?</title>
+    <style>
+        body {
+            background-color: #262626; /* Gris oscuro */
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #FFFFFF; /* Texto blanco */
+        }
+
+        header {
+            background-color: #4D4D4D; /* Gris */
+            padding: 20px 0;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        footer {
+            background-color: #4D4D4D; /* Gris */
+            padding: 10px 0;
+            width: 100%;
+        }
+
+        #contenido {
+            background-color: #363636; /* Gris oscuro */
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1); /* Sombra */
+            padding: 40px;
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+            min-height: 10vh; /* Altura mínima de la ventana */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* Alinear el contenido en la parte superior y inferior */
+        }
+
+        h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 20px;
+            margin-bottom: 15px;
+            margin-top: 0;
+            max-width: 100%;
+        }
+
+        .temporizador-item {
+            display: inline-block;
+            margin: 0 5px;
+        }
+
+        .nombre {
+            font-size: 16px;
+            color: #888888; /* Color gris claro */
+        }
+
+        .valor {
+            font-size: 24px;
+        }
+
+        @keyframes dial-rotate {
+            0% { transform: rotateX(0deg); }
+            100% { transform: rotateX(360deg); }
+        }
+
+        footer p {
+            text-align: center;
+            margin: 0; /* Ajustar margen para evitar superposición */
+            padding: 5px 0; /* Añadir espaciado dentro del footer */
+        }
+
+        /* Estilos para la imagen */
+        .imagen-container {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .imagen-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+    </style>
+    <link rel="shortcut icon" href="temporizador.ico">
+</head>
+
+<body>
+      <!-- Etiqueta de audio oculta que se reproducirá automáticamente y en bucle -->
+      <audio id="miMusica" loop>
+        <source src="musica para videos .mp3" type="audio/mpeg">
+        
+      </audio>
+  
+      <script>
+          // Función para reproducir música
+          function reproducirMusica() {
+              document.getElementById('miMusica').play();
+          }
+  
+          // Eventos que llaman a la función reproducirMusica
+          document.body.addEventListener('click', reproducirMusica);
+          document.body.addEventListener('mousemove', reproducirMusica);
+          document.body.addEventListener('touchstart', reproducirMusica);
+      </script>
+      
+    <header>
+        <h1>¿Es 2025?</h1>
+    </header>
+
+    <div id="contenido">
+        <div>
+            <p id="mensaje"></p>
+            <div id="temporizador">
+                <div class="temporizador-item">
+                    <span class="nombre">Días</span><br>
+                    <span class="valor" id="dias"></span>
+                </div>
+                <div class="temporizador-item">
+                    <span class="nombre">Horas</span><br>
+                    <span class="valor" id="horas"></span>
+                </div>
+                <div class="temporizador-item">
+                    <span class="nombre">Minutos</span><br>
+                    <span class="valor" id="minutos"></span>
+                </div>
+                <div class="temporizador-item">
+                    <span class="nombre">Segundos</span><br>
+                    <span class="valor" id="segundos"></span>
+                </div>
+            </div>
+            
+            <p>¡El futuro está cerca!</p>
+        </div>
+      
+    </div>
+    <p></p>
+    <center><p style="text-align: center;">Este proyecto fue realizado por los alumnos del Colegio de Bachilleres  paltel 13 xaltianguis "402" <p> y fue gestionado por el profesor José Alfredo Porras Rivera.</p></center>
+    <!-- Agregando la imagen al final del documento -->
+    <div class="imagen-container">
+        <img src="fotogrupal.jpg.jpg" alt="Grupo de la Escuela" width="400" height="500"> 
+    </div>
+
+    <footer> 
+         <button id="activarNotificaciones">Activar notificaciones</button>
+        <p>© 2024 - Todos los derechos reservados</p>
+    </footer>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Función para actualizar el temporizador cada segundo
+            setInterval(actualizarTemporizador, 1000);
+
+            function actualizarTemporizador() {
+                // Obtener la fecha y hora actual
+                var ahora = new Date();
+
+                // Obtener la fecha y hora de 2025
+                var año2025 = new Date("2025-01-01");
+
+                // Calcular la diferencia entre ahora y 2025
+                var diferencia = año2025 - ahora;
+
+                // Calcular días, horas, minutos y segundos restantes
+                var dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+                var horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
+                var segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
+
+                // Actualizar el contenido del temporizador
+                document.getElementById("dias").innerHTML = dias;
+                document.getElementById("horas").innerHTML = horas;
+                document.getElementById("minutos").innerHTML = minutos;
+                document.getElementById("segundos").innerHTML = segundos;
+
+
+                
+            }
+
+            // Obtener el año actual
+            var añoActual = new Date().getFullYear();
+
+            // Comprobar si el año es 2025
+            if (añoActual === 2025) {
+                document.getElementById("mensaje").innerHTML = "¡AGUEBO YA ES  2025!";
+            } else {
+                document.getElementById("mensaje").innerHTML = "A UN FALTA sigue esperando cabron carita feliz.";
+            }
+
+            // Evento del botón para activar notificaciones
+            document.getElementById('activarNotificaciones').addEventListener('click', function() {
+                if (Notification.permission !== 'granted')
+                    Notification.requestPermission();
+            });
+        });
+    </script>
+   
+</body>
+</html>
